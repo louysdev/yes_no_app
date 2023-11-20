@@ -46,6 +46,7 @@ class _ChatView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Forma de usar todo lo que viene del provider
     final chatProvider = context.watch<ChatProvider>();
 
     return SafeArea(
@@ -57,10 +58,11 @@ class _ChatView extends StatelessWidget {
                 child: ListView.builder(
               itemCount: chatProvider.messageList.length,
               itemBuilder: (context, index) {
+                // Obtener del provider las lista de mensajes, e sacar un mensaje en especifico
                 final message = chatProvider.messageList[index];
                 return (message.fromWho == FromWho.her)
                     ? HerMessageBubble()
-                    : MyMessageBubble();
+                    : MyMessageBubble(message: message);
               },
             )),
             MessageFieldBox(),
