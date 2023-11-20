@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/presentation/widgets/chat/my_message_bubble.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: _AppBar(), body: const _ChatView());
+    return const Scaffold(appBar: _AppBar(), body: _ChatView());
   }
 }
 
@@ -49,10 +50,10 @@ class _ChatView extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: 100,
                   itemBuilder: (context, index) {
-                    return Text("Indice $index");
+                    return const MyMessageBubble();
                   },
             )),
-            Text("Mundo")
+            const Text("Mundo")
           ],
         ),
       ),
