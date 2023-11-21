@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MessageFieldBox extends StatelessWidget {
-  const MessageFieldBox({super.key});
+  // Callback que me mandaran para usar
+  final ValueChanged<String> onValue;
+
+  const MessageFieldBox({super.key, required this.onValue});
 
   @override
   Widget build(BuildContext context) {
-
     final focusNode = FocusNode();
 
     final textController = TextEditingController();
@@ -24,7 +26,9 @@ class MessageFieldBox extends StatelessWidget {
           icon: Icon(Icons.send_rounded),
           onPressed: () {
             final textValue = textController.value.text;
-            print("Valor capturado de la caja ${textValue}");
+            if (textValue.isNotEmpty) {
+              onValue(textValue);
+            }
             textController.clear();
           },
         ));
@@ -37,7 +41,9 @@ class MessageFieldBox extends StatelessWidget {
       controller: textController,
       decoration: inputDecoration,
       onFieldSubmitted: (value) {
-        print("Valor capturado: ${value}");
+        if (value.isNotEmpty) {
+          onValue(value);
+        }
         textController.clear();
         focusNode.requestFocus();
       },

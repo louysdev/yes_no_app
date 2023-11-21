@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yes_no_app/domain/entities/message.dart';
@@ -30,11 +29,11 @@ class _AppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: const Padding(
         padding: EdgeInsets.all(4),
         child: CircleAvatar(
-          backgroundImage: NetworkImage(
-              "https://gcdn.emol.cl/amor/files/2017/11/guioteca_mia-khalifa-.jpg"),
-        ),
+            // backgroundImage: NetworkImage(
+            //     "https://gcdn.emol.cl/amor/files/2017/11/guioteca_mia-khalifa-.jpg"),
+            ),
       ),
-      title: const Text("Malona 😈"),
+      title: const Text("Manito 🐯"),
     );
   }
 }
@@ -65,7 +64,10 @@ class _ChatView extends StatelessWidget {
                     : MyMessageBubble(message: message);
               },
             )),
-            MessageFieldBox(),
+            MessageFieldBox(
+              // onValue: (value) => chatProvider.sendMessage(value),
+              onValue: chatProvider.sendMessage,
+            ),
           ],
         ),
       ),
