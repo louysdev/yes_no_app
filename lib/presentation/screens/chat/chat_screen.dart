@@ -55,6 +55,8 @@ class _ChatView extends StatelessWidget {
           children: [
             Expanded(
                 child: ListView.builder(
+              // Este controller se amarra con el provider
+              controller: chatProvider.chatScrollController,
               itemCount: chatProvider.messageList.length,
               itemBuilder: (context, index) {
                 // Obtener del provider las lista de mensajes, e sacar un mensaje en especifico
