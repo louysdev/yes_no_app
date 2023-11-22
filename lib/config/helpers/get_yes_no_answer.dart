@@ -7,6 +7,9 @@ class GetYesNoAnswer {
   Future<Message> getAnswer() async {
     final response = await _dio.get("https://yesno.wtf/api");
 
-    throw UnimplementedError();
+    return Message(
+        text: response.data["answer"],
+        fromWho: FromWho.her,
+        imageUrl: response.data["image"]);
   }
 }
